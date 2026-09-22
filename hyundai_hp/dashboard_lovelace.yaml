@@ -1,0 +1,163 @@
+# Lovelace dashboard: 2 záložky (Vybrané / Vše) pro Hyundai HPMO-06.
+# Import: nový dashboard -> "..." -> Upravit jako YAML -> vložit celek.
+title: Tepelné čerpadlo
+views:
+  - title: TČ Vybrané
+    path: tc-vybrane
+    icon: mdi:heat-pump
+    cards:
+      - type: entities
+        title: Stav
+        entities:
+          - entity: binary_sensor.hyundai_hp_heating_active
+            name: Topení běží
+          - entity: binary_sensor.hyundai_hp_dhw_active
+            name: Ohřev TUV běží
+          - entity: binary_sensor.hyundai_hp_defrost
+            name: Odmrazování
+          - entity: sensor.hyundai_hp_hp_mode
+            name: Režim TČ
+          - entity: sensor.hyundai_hp_error_text
+            name: Chyba
+      - type: glance
+        title: Teploty
+        entities:
+          - entity: sensor.hyundai_hp_tw_out
+            name: Výstup vody
+          - entity: sensor.hyundai_hp_t1_total
+            name: Výstup celkem
+          - entity: sensor.hyundai_hp_t5_dhw
+            name: TUV
+          - entity: sensor.hyundai_hp_t4_ambient
+            name: Venku
+          - entity: sensor.hyundai_hp_ta_room
+            name: Místnost
+      - type: entities
+        title: Výkon a energie
+        entities:
+          - entity: sensor.hyundai_hp_heat_power_rt
+            name: Výkon topení
+          - entity: sensor.hyundai_hp_heat_cop_rt
+            name: COP
+          - entity: sensor.hyundai_hp_heat_energy_total
+            name: Energie celkem
+          - entity: sensor.hyundai_hp_water_flow
+            name: Průtok
+      - type: entities
+        title: Ovládání
+        entities:
+          - entity: select.hyundai_hp_op_mode_set
+            name: Režim
+          - entity: number.hyundai_hp_t1s
+            name: Teplota vody Z1
+          - entity: number.hyundai_hp_t5s
+            name: Teplota TUV
+          - entity: number.hyundai_hp_tas
+            name: Teplota místnosti
+          - entity: switch.hyundai_hp_power_z1
+            name: Zóna 1
+          - entity: switch.hyundai_hp_power_dhw
+            name: TUV
+          - entity: switch.hyundai_hp_eco
+            name: ECO
+          - entity: switch.hyundai_hp_silent
+            name: Tichý režim
+          - entity: switch.hyundai_hp_disinfection
+            name: Dezinfekce
+          - entity: switch.hyundai_hp_pump_d_circ
+            name: Cirkulace TUV
+      - type: history-graph
+        title: Průběh teplot
+        hours_to_show: 24
+        entities:
+          - entity: sensor.hyundai_hp_tw_out
+          - entity: sensor.hyundai_hp_t5_dhw
+          - entity: sensor.hyundai_hp_t4_ambient
+
+  - title: TČ Vše
+    path: tc-vse
+    icon: mdi:heat-pump-outline
+    cards:
+      - type: entities
+        title: Provozní režim a frekvence
+        entities:
+          - entity: sensor.hyundai_hp_op_mode
+          - entity: sensor.hyundai_hp_frequency
+          - entity: sensor.hyundai_hp_target_freq
+          - entity: sensor.hyundai_hp_fan
+          - entity: sensor.hyundai_hp_exv1
+          - entity: sensor.hyundai_hp_comp_hours
+          - entity: sensor.hyundai_hp_capacity
+      - type: entities
+        title: Teploty okruhu
+        entities:
+          - entity: sensor.hyundai_hp_tw_in
+          - entity: sensor.hyundai_hp_tp
+          - entity: sensor.hyundai_hp_th
+          - entity: sensor.hyundai_hp_t3
+          - entity: sensor.hyundai_hp_t2
+          - entity: sensor.hyundai_hp_t2b
+          - entity: sensor.hyundai_hp_tf
+          - entity: sensor.hyundai_hp_tl
+          - entity: sensor.hyundai_hp_tbt1
+          - entity: sensor.hyundai_hp_t1s_calc
+      - type: entities
+        title: Tlaky a elektrika
+        entities:
+          - entity: sensor.hyundai_hp_p1
+          - entity: sensor.hyundai_hp_p2
+          - entity: sensor.hyundai_hp_odu_current
+          - entity: sensor.hyundai_hp_odu_voltage
+          - entity: sensor.hyundai_hp_dc_current
+          - entity: sensor.hyundai_hp_dc_voltage
+          - entity: sensor.hyundai_hp_pump_pwm
+      - type: entities
+        title: Energie a COP (kumulativní)
+        entities:
+          - entity: sensor.hyundai_hp_heat_cons_total
+          - entity: sensor.hyundai_hp_heat_cop_total
+          - entity: sensor.hyundai_hp_cool_energy_total
+          - entity: sensor.hyundai_hp_cool_eer_total
+          - entity: sensor.hyundai_hp_dhw_energy_total
+          - entity: sensor.hyundai_hp_dhw_cop_total
+          - entity: sensor.hyundai_hp_cool_cap_rt
+          - entity: sensor.hyundai_hp_dhw_cap_rt
+          - entity: sensor.hyundai_hp_dhw_cop_rt
+      - type: entities
+        title: Stavy a výstupy
+        entities:
+          - entity: binary_sensor.hyundai_hp_error_active
+          - entity: binary_sensor.hyundai_hp_cooling_active
+          - entity: binary_sensor.hyundai_hp_antifreeze
+          - entity: binary_sensor.hyundai_hp_pump_i
+          - entity: binary_sensor.hyundai_hp_pump_d
+          - entity: binary_sensor.hyundai_hp_tbh_on
+          - entity: binary_sensor.hyundai_hp_ibh_on
+          - entity: binary_sensor.hyundai_hp_alarm
+          - entity: binary_sensor.hyundai_hp_oil_return
+          - entity: binary_sensor.hyundai_hp_pump_o
+      - type: entities
+        title: Rozšířené ovládání
+        entities:
+          - entity: switch.hyundai_hp_power_room
+          - entity: switch.hyundai_hp_c2_reset
+          - entity: number.hyundai_hp_t1s2
+          - entity: number.hyundai_hp_sgmax
+          - entity: number.hyundai_hp_pumpd_time
+          - entity: select.hyundai_hp_silent_level
+          - entity: select.hyundai_hp_curve_z1
+          - entity: select.hyundai_hp_forced_dhw
+          - entity: select.hyundai_hp_forced_tbh
+          - entity: select.hyundai_hp_forced_ibh
+      - type: entities
+        title: Diagnostika
+        entities:
+          - entity: sensor.hyundai_hp_error_code
+          - entity: sensor.hyundai_hp_err_detail
+          - entity: sensor.hyundai_hp_idu_sw
+          - entity: sensor.hyundai_hp_hmi_sw
+          - entity: sensor.hyundai_hp_status1_raw
+          - entity: sensor.hyundai_hp_load_raw
+          - entity: sensor.hyundai_hp_status3_raw
+          - entity: sensor.hyundai_hp_t5s_setpoint_rb
+          - entity: sensor.hyundai_hp_t1s_setpoint_rb

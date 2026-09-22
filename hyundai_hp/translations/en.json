@@ -1,0 +1,140 @@
+{
+  "title": "Hyundai Heat Pump (HPMO)",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect heat pump",
+        "description": "Enter the Waveshare RS485-to-ETH bridge address. The heat pump Modbus address (HMI Address for BMS) is usually 1.",
+        "data": {
+          "host": "Host (IP address)",
+          "port": "TCP port",
+          "slave": "Modbus slave ID",
+          "scan_interval": "Polling interval (s)",
+          "simple_mode": "Simple mode (core entities only)"
+        }
+      }
+    },
+    "error": {
+      "required": "Host is required.",
+      "cannot_connect": "Cannot reach the unit - entry saved, check host/port/slave and retry.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This heat pump is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Connection settings",
+        "description": "Change the bridge address without deleting the integration.",
+        "data": {
+          "host": "Host (IP address)",
+          "port": "TCP port",
+          "slave": "Modbus slave ID",
+          "scan_interval": "Polling interval (s)",
+          "simple_mode": "Simple mode (core entities only)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "tw_in": { "name": "Inlet water temperature" },
+      "tw_out": { "name": "Outlet water temperature" },
+      "t1_total": { "name": "Total outlet water temperature" },
+      "t5_dhw": { "name": "DHW tank temperature" },
+      "t4_ambient": { "name": "Outdoor temperature" },
+      "ta_room": { "name": "Room temperature" },
+      "op_mode": { "name": "Operating mode" },
+      "hp_mode": { "name": "Heat pump mode" },
+      "frequency": { "name": "Compressor frequency" },
+      "heat_power_rt": { "name": "Heating power (real-time)" },
+      "heat_cop_rt": { "name": "Heating COP (real-time)" },
+      "heat_energy_total": { "name": "Heating energy (total)" },
+      "error_code": { "name": "Error code" },
+      "error_text": { "name": "Error description" },
+      "water_flow": { "name": "Water flow" },
+      "tbt1": { "name": "Buffer tank top" },
+      "p1": { "name": "High pressure" },
+      "p2": { "name": "Low pressure" },
+      "tp": { "name": "Compressor discharge" },
+      "th": { "name": "Compressor suction" },
+      "t3": { "name": "Condenser temperature" },
+      "t2": { "name": "Refrigerant liquid" },
+      "t2b": { "name": "Refrigerant gas" },
+      "fan": { "name": "Fan speed" },
+      "exv1": { "name": "Expansion valve 1" },
+      "odu_current": { "name": "Outdoor unit current" },
+      "odu_voltage": { "name": "Outdoor unit voltage" },
+      "comp_hours": { "name": "Compressor hours" },
+      "capacity": { "name": "Unit capacity" },
+      "tf": { "name": "PCB module temperature" },
+      "t1s_calc": { "name": "Calculated flow setpoint (curve)" },
+      "tw2": { "name": "Zone 2 water temperature" },
+      "err_detail": { "name": "Error detail" },
+      "dc_current": { "name": "DC bus current" },
+      "dc_voltage": { "name": "DC bus voltage" },
+      "target_freq": { "name": "Target frequency" },
+      "idu_sw": { "name": "Hydraulic module FW" },
+      "hmi_sw": { "name": "Wired controller FW" },
+      "heat_cons_total": { "name": "Heating consumption (total)" },
+      "heat_cop_total": { "name": "Heating COP (total)" },
+      "cool_energy_total": { "name": "Cooling energy (total)" },
+      "cool_eer_total": { "name": "Cooling EER (total)" },
+      "dhw_energy_total": { "name": "DHW energy (total)" },
+      "dhw_cop_total": { "name": "DHW COP (total)" },
+      "cool_cap_rt": { "name": "Cooling capacity (real-time)" },
+      "dhw_cap_rt": { "name": "DHW capacity (real-time)" },
+      "dhw_cop_rt": { "name": "DHW COP (real-time)" },
+      "tl": { "name": "Outdoor pipe temperature" },
+      "pump_pwm": { "name": "Circulation pump PWM" },
+      "status1_raw": { "name": "Status word 1 (raw)" },
+      "load_raw": { "name": "Load outputs (raw)" },
+      "status3_raw": { "name": "Status word 3 (raw)" },
+      "t5s_setpoint_rb": { "name": "DHW setpoint (readback)" },
+      "t1s_setpoint_rb": { "name": "Flow setpoint (readback)" }
+    },
+    "binary_sensor": {
+      "error_active": { "name": "Error" },
+      "heating_active": { "name": "Heating running" },
+      "cooling_active": { "name": "Cooling running" },
+      "dhw_active": { "name": "DHW heating running" },
+      "defrost": { "name": "Defrosting" },
+      "antifreeze": { "name": "Anti-freeze protection" },
+      "pump_i": { "name": "Internal circulation pump" },
+      "pump_d": { "name": "DHW circulation pump" },
+      "tbh_on": { "name": "DHW electric heater (TBH)" },
+      "ibh_on": { "name": "Heating electric heaters (IBH)" },
+      "alarm": { "name": "Alarm" },
+      "oil_return": { "name": "Oil return" },
+      "pump_o": { "name": "External circulation pump" }
+    },
+    "switch": {
+      "power_z1": { "name": "Zone 1 power" },
+      "power_dhw": { "name": "DHW power" },
+      "power_room": { "name": "Room-control power" },
+      "eco": { "name": "ECO mode" },
+      "silent": { "name": "Silent mode" },
+      "disinfection": { "name": "Disinfection" },
+      "pump_d_circ": { "name": "DHW circulation" },
+      "c2_reset": { "name": "Reset fault C2" }
+    },
+    "number": {
+      "t1s": { "name": "Flow temperature setpoint (Zone 1)" },
+      "t5s": { "name": "DHW temperature setpoint" },
+      "tas": { "name": "Room temperature setpoint" },
+      "t1s2": { "name": "Flow temperature setpoint (Zone 2)" },
+      "sgmax": { "name": "Smart-grid max time" },
+      "pumpd_time": { "name": "DHW pump run time" }
+    },
+    "select": {
+      "op_mode_set": { "name": "Operating mode" },
+      "silent_level": { "name": "Silent level" },
+      "curve_z1": { "name": "Climate curve (Zone 1)" },
+      "forced_dhw": { "name": "Forced DHW" },
+      "forced_tbh": { "name": "Forced TBH heater" },
+      "forced_ibh": { "name": "Forced IBH heaters" }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "domain": "hyundai_hp",
+  "name": "Hyundai Heat Pump (HPMO)",
+  "version": "0.1.0",
+  "documentation": "https://github.com/example/ha-hyundai-hp",
+  "issue_tracker": "https://github.com/example/ha-hyundai-hp/issues",
+  "requirements": ["pymodbus>=3.6.0"],
+  "codeowners": ["@local"],
+  "config_flow": true,
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "is_builtin": false
+}
